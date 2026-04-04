@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+functions/node_modules/
+web/node_modules/
+
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/**/*.pyc
+backend/.pytest_cache/
+
+# Build outputs
+functions/lib/
+web/dist/
+
+# Environment
+.env
+.env.local
+functions/.env
+backend/.env
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
