@@ -1,4 +1,4 @@
-from gemini_client import generate_embedding
+from groq_client import generate_embedding
 from rag.kb_docs import KNOWLEDGE_BASE_DOCUMENTS
 from models import KBDocument
 from datetime import datetime

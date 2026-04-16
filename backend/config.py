@@ -5,10 +5,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    # Gemini AI Configuration
-    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
-    GEMINI_TEXT_MODEL = 'gemini-2.5-flash'
-    GEMINI_EMBEDDING_MODEL = 'gemini-embedding-001'
+    # Groq AI Configuration
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY', '')
+    GROQ_TEXT_MODEL = 'llama-3.3-70b-versatile'  # Fast and powerful
+    GROQ_BASE_URL = 'https://api.groq.com/openai/v1'
+    
+    # Embedding Configuration (using sentence-transformers locally)
+    EMBEDDING_MODEL = 'all-MiniLM-L6-v2'  # Lightweight local embedding
     
     # Google Places API
     GOOGLE_PLACES_API_KEY = os.getenv('GOOGLE_PLACES_API_KEY', '')
@@ -31,10 +34,12 @@ class Config:
 
 def validate_config():
     """Validate required configuration"""
-    if not Config.GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY is required")
+    if not Config.GROQ_API_KEY:
+        raise ValueError("GROQ_API_KEY is required")
     if not Config.GOOGLE_PLACES_API_KEY:
         raise ValueError("GOOGLE_PLACES_API_KEY is required")
-    if not Config.FIREBASE_PROJECT_ID:
-        raise ValueError("FIREBASE_PROJECT_ID is required")
-    print("✅ Configuration validated")
+    
+    # Debug: Show first/last chars of API key
+    key = Config.GROQ_API_KEY
+    print(f"✅ Configuration validated")
+    print(f"🔑 Groq API Key: {key[:8]}...{key[-8:]} (length: {len(key)})")
