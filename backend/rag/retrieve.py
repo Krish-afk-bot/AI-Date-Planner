@@ -1,4 +1,4 @@
-from gemini_client import cosine_similarity
+from groq_client import cosine_similarity
 from config import Config
 from rag.embed import get_all_kb_documents, embed_query
 
