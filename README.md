@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💕 AI Date Planner
+# AI Date Planner
 
 **Personalized date planning powered by Gemini AI and real-time data**
 
