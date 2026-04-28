@@ -1,0 +1,108 @@
+[
+  {
+    "id": "jaipur_romantic_budget_mid",
+    "city": "Jaipur",
+    "occasion": ["anniversary", "first_date", "valentine"],
+    "budget_tier": "mid",
+    "budget_range": "2000-5000",
+    "personality_tags": ["Romantic", "Traditional", "Artsy"],
+    "tip_text": "Jaipur's old city walled area (Pink City) is ideal for romantic evening walks. Chokhi Dhani offers authentic Rajasthani dining with folk performances for around ₹1200-1800 per person. Nahargarh Fort has a rooftop restaurant with fort and city views — best visited at sunset. Avoid weekends as crowds reduce intimacy. Auto-rickshaw rides through the bazaars are charming and budget-friendly for transitions between venues."
+  },
+  {
+    "id": "jaipur_foodie_budget_low",
+    "city": "Jaipur",
+    "occasion": ["casual", "first_date"],
+    "budget_tier": "low",
+    "budget_range": "500-2000",
+    "personality_tags": ["Foodie", "Adventurous", "Introvert"],
+    "tip_text": "MI Road and Johari Bazaar have excellent street food stops: Rawat Mishthan Bhandar for pyaaz kachori, LMB for traditional thali. A food walk in the old city covering 4-5 stops costs under ₹500 for two. Suvarna Mahal at Rambagh Palace has an affordable afternoon tea for ₹800 per person if you want one upscale moment. Evening chai at a rooftop haveli café is a Jaipur staple."
+  },
+  {
+    "id": "jaipur_outdoor_nature",
+    "city": "Jaipur",
+    "occasion": ["casual", "adventure"],
+    "budget_tier": "low",
+    "budget_range": "500-1500",
+    "personality_tags": ["Nature Lover", "Adventurous", "Sporty"],
+    "tip_text": "Mansagar Lake (Jal Mahal area) is free to visit and beautiful at dawn or dusk — the palace appears to float. Nahargarh Biological Park for nature lovers, entry ₹50. Amer Fort complex with light show at night (₹200-300) is a classic activity. Early morning visits avoid peak heat. Stay away from midday in summer (March-June). Carry water. Aravalli hills surrounding the city offer accessible morning hikes."
+  },
+  {
+    "id": "delhi_romantic_budget_high",
+    "city": "Delhi",
+    "occasion": ["anniversary", "special"],
+    "budget_tier": "high",
+    "budget_range": "5000-15000",
+    "personality_tags": ["Romantic", "Extrovert", "Foodie"],
+    "tip_text": "Lodhi Garden at sunset followed by dinner at Indian Accent (book 2 weeks ahead) is a classic Delhi luxury date. Hauz Khas Village has rooftop restaurants overlooking the lake. Connaught Place at night is well-lit and lively. Khan Market area for upscale café dining — Perch Wine & Coffee Bar is great for a relaxed start. Avoid Lutyen's Delhi at night — limited options. Uber/Ola recommended over autos for long distances."
+  },
+  {
+    "id": "delhi_foodie_budget_mid",
+    "city": "Delhi",
+    "occasion": ["casual", "first_date"],
+    "budget_tier": "mid",
+    "budget_range": "2000-6000",
+    "personality_tags": ["Foodie", "Adventurous"],
+    "tip_text": "Paranthe Wali Gali in Chandni Chowk is a must for food lovers — quirky and memorable for a first date. Dilli Haat (INA) has food stalls from every Indian state, great for exploring together (entry ₹100). Sector 29 in Gurugram has a pedestrian food street with global cuisine. Old Delhi food tour by foot or e-rickshaw costs ₹500-1500 including food. Evening at Majnu Ka Tilla for Tibetan food is offbeat and budget-friendly."
+  },
+  {
+    "id": "mumbai_romantic_budget_high",
+    "city": "Mumbai",
+    "occasion": ["anniversary", "valentine"],
+    "budget_tier": "high",
+    "budget_range": "5000-20000",
+    "personality_tags": ["Romantic", "Extrovert"],
+    "tip_text": "Marine Drive at night (Queen's Necklace) is free and iconic — ideal walk before or after dinner. Bandra-Worli Sea Link drive at night is romantic and cheap (toll ~₹90). Tasting Room at The Oberoi and Neel at Taj Lands End are premium dinner options. Colaba Causeway for a walk after dinner. Avoid Dharavi and CST area late at night. Kaali-Peeli cabs are safe and affordable; Ola/Uber surge prices in evening peak."
+  },
+  {
+    "id": "mumbai_artsy_budget_mid",
+    "city": "Mumbai",
+    "occasion": ["casual", "creative"],
+    "budget_tier": "mid",
+    "budget_range": "2000-5000",
+    "personality_tags": ["Artsy", "Introvert", "Bookworm"],
+    "tip_text": "Kala Ghoda Arts District has galleries open till 7pm, several are free. Prithvi Theatre in Juhu has affordable plays (₹200-500) and a famous café. Bandra's street art trail (Ranwar Village) is walkable and photogenic. Kitab Khana bookstore café near Fort area is intimate and quiet. Jehangir Art Gallery near Regal is free. Crawford Market for old Bombay architecture exploration. Avoid CST and Dadar during peak hours (9am-11am, 5pm-8pm)."
+  },
+  {
+    "id": "bangalore_foodie_budget_mid",
+    "city": "Bangalore",
+    "occasion": ["first_date", "casual"],
+    "budget_tier": "mid",
+    "budget_range": "2000-5000",
+    "personality_tags": ["Foodie", "Chill", "Introvert"],
+    "tip_text": "Indiranagar 100 Feet Road has the best café density in India — Matteo Coffea, Toit Brewpub, The Permit Room. Church Street Social is always buzzing and great for first dates. Koramangala for nightlife. Cubbon Park for a morning date start. Bangalore traffic is brutal — plan activities within one zone (Indiranagar OR Koramangala OR MG Road, not mix). Namma Metro is reliable for N-S routes."
+  },
+  {
+    "id": "bangalore_romantic_nature",
+    "city": "Bangalore",
+    "occasion": ["anniversary", "casual"],
+    "budget_tier": "low",
+    "budget_range": "500-2000",
+    "personality_tags": ["Nature Lover", "Romantic", "Chill"],
+    "tip_text": "Lalbagh Botanical Garden (entry ₹20) is stunning in morning light — 240 acres, lake, greenhouse. Cubbon Park for cycling together (cycle rentals available). Sankey Tank lakeside walk is peaceful and less touristy than Lalbagh. Nandi Hills for a weekend early morning sunrise drive (1 hour from city). Turahalli Forest for short weekend treks. Best time for outdoor Bangalore: October to February. Avoid March-May heat."
+  },
+  {
+    "id": "general_safety_night",
+    "city": "all",
+    "occasion": ["all"],
+    "budget_tier": "all",
+    "personality_tags": ["all"],
+    "tip_text": "General safety guidelines for Indian city dates: Prefer well-lit, public spaces for first dates. Inform a trusted person of your plans. Use Ola/Uber over local autos late at night — share trip with a contact. Avoid isolated parks or lakesides after 9pm. Metro is safe till last service (usually 11pm). Restaurant areas inside malls are among the safest options in any city for late hours. Have your location shared with at least one friend."
+  },
+  {
+    "id": "general_budget_tips",
+    "city": "all",
+    "occasion": ["all"],
+    "budget_tier": "low",
+    "budget_range": "500-2000",
+    "personality_tags": ["all"],
+    "tip_text": "Budget date planning in India: QSR chains (Café Coffee Day, Chaayos) are good starting points at ₹300-500 for two. Museum entry fees are typically ₹50-200. Public parks are free. Street food dates are often more memorable than restaurant ones — budget ₹300-500 for a thorough food walk. Swiggy/Zomato Gold can reduce restaurant bills by 20-30% if the user has the subscription. Split a tasting platter instead of separate mains to try more dishes."
+  },
+  {
+    "id": "general_gift_guidance",
+    "city": "all",
+    "occasion": ["anniversary", "valentine", "first_date"],
+    "budget_tier": "all",
+    "personality_tags": ["all"],
+    "tip_text": "Gift philosophy for Indian dates: Handmade or personalised gifts outperform expensive ones on most occasions. A printed photo, a handwritten note, or a small relevant book (matched to their interest) resonates deeply. For foodie partners, artisanal food hampers (local mithai, specialty tea, quality chocolate) are universally appreciated. Avoid overly expensive gifts on early dates — it creates pressure. Flowers are always appropriate and culturally significant; fresh flowers over artificial every time."
+  }
+]
