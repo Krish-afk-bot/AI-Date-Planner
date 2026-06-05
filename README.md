@@ -11,7 +11,7 @@
 
 *Helping couples create memorable experiences through intelligent planning*
 
-![App Demo](demo.webp)
+![App Demo](demo.gif)
 
 [Quick Start](#quick-start) | [Architecture](#system-architecture) | [Tech Stack](#technology-stack)
 
