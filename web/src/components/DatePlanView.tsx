@@ -15,7 +15,7 @@ export default function DatePlanView({ plan, onReset }: Props) {
   return (
     <div className="date-plan">
       <div className="plan-header">
-        <h2>Your Perfect Date Plan 💕</h2>
+        <h2>Your Date Plan</h2>
         <button onClick={onReset} className="btn-secondary">
           Plan Another Date
         </button>
@@ -28,12 +28,12 @@ export default function DatePlanView({ plan, onReset }: Props) {
       <div className="plan-budget" style={{ borderColor: budgetColor }}>
         <div className="budget-info">
           <span className="budget-label">Total Estimated Cost:</span>
-          <span className="budget-amount">₹{plan.totalEstimatedCost}</span>
+          <span className="budget-amount">Rs.{plan.totalEstimatedCost}</span>
         </div>
         <div className="budget-fit" style={{ color: budgetColor }}>
-          {plan.budgetFit === 'under' && '✅ Under Budget'}
-          {plan.budgetFit === 'within' && '✅ Within Budget'}
-          {plan.budgetFit === 'over' && '⚠️ Over Budget'}
+          {plan.budgetFit === 'under' && 'Under Budget'}
+          {plan.budgetFit === 'within' && 'Within Budget'}
+          {plan.budgetFit === 'over' && 'Over Budget'}
         </div>
       </div>
 
@@ -44,11 +44,11 @@ export default function DatePlanView({ plan, onReset }: Props) {
             <div className="segment-number">{index + 1}</div>
             <div className="segment-content">
               <h4>{segment.title}</h4>
-              <div className="segment-time">🕐 {segment.timeWindow}</div>
-              
+              <div className="segment-time">{segment.timeWindow}</div>
+
               {segment.placeName && (
                 <div className="segment-place">
-                  <div className="place-name">📍 {segment.placeName}</div>
+                  <div className="place-name">{segment.placeName}</div>
                   {segment.placeAddress && (
                     <div className="place-address">{segment.placeAddress}</div>
                   )}
@@ -59,7 +59,7 @@ export default function DatePlanView({ plan, onReset }: Props) {
                       rel="noopener noreferrer"
                       className="place-link"
                     >
-                      View on Google Maps →
+                      View on Google Maps
                     </a>
                   )}
                 </div>
@@ -77,7 +77,7 @@ export default function DatePlanView({ plan, onReset }: Props) {
               )}
 
               <div className="segment-cost">
-                Cost: ₹{segment.estimatedCost}
+                Cost: Rs.{segment.estimatedCost}
               </div>
             </div>
           </div>
@@ -86,18 +86,18 @@ export default function DatePlanView({ plan, onReset }: Props) {
 
       <div className="plan-extras">
         <div className="extra-card gift-card">
-          <h3>🎁 Gift Recommendation</h3>
+          <h3>Gift Recommendation</h3>
           <div className="extra-content">
             <div className="extra-idea">{plan.giftRecommendation.idea}</div>
             <div className="extra-reason">{plan.giftRecommendation.reason}</div>
             <div className="extra-cost">
-              Estimated Cost: ₹{plan.giftRecommendation.estimatedCost}
+              Estimated Cost: Rs.{plan.giftRecommendation.estimatedCost}
             </div>
           </div>
         </div>
 
         <div className="extra-card flowers-card">
-          <h3>💐 Flowers Recommendation</h3>
+          <h3>Flowers Recommendation</h3>
           <div className="extra-content">
             <div className="extra-idea">{plan.flowersRecommendation.bouquetType}</div>
             <div className="extra-reason">{plan.flowersRecommendation.explanation}</div>
@@ -106,7 +106,7 @@ export default function DatePlanView({ plan, onReset }: Props) {
       </div>
 
       <div className="plan-footer">
-        <p>Have a wonderful date! 💕</p>
+        <p>Have a wonderful date!</p>
       </div>
     </div>
   );

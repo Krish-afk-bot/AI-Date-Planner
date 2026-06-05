@@ -1,4 +1,4 @@
-from models import DateRequest, DatePlan, PreferenceVector, DateSegment, Location
+﻿from models import DateRequest, DatePlan, PreferenceVector, DateSegment, Location
 from groq_client import generate_text
 from rag.retrieve import retrieve_relevant_docs, build_rag_context
 from tools.places_tool_async import places_tool_async
@@ -80,11 +80,11 @@ async def plan_date_async(request: DateRequest):
     async with aiohttp.ClientSession() as session:
         places, gifts, flowers = await run_tools_parallel(request, preference_vector, session)
     
-    # Step 4: Generate date plan with Gemini
+    # Step 4: Generate date plan with LLM
     system_prompt = get_system_prompt()
     user_prompt = build_planner_prompt(request, preference_vector, rag_context, places, gifts, flowers)
-    
-    print("Calling Gemini to generate date plan...")
+
+    print("Calling LLM to generate date plan...")
     response = generate_text(user_prompt, system_instruction=system_prompt, temperature=0.7)
     
     # Step 5: Parse response
@@ -173,7 +173,7 @@ CRITICAL RULES:
 3. Consider safety and comfort in Indian city context
 4. Duration must be 2-4 hours total
 5. Output MUST be valid JSON only - no extra text, explanations, or markdown
-6. All costs must be in Indian Rupees (₹)
+6. All costs must be in Indian Rupees (Rs.)
 7. Be culturally sensitive and respectful
 8. Consider dietary restrictions and preferences
 9. Prioritize well-lit, public, safe venues
@@ -244,7 +244,7 @@ def build_planner_prompt(request, pref, rag_context, places, gifts, flowers):
 
 === DATE REQUEST ===
 Occasion: {request.occasion}
-Budget: ₹{request.budgetMin} - ₹{request.budgetMax}
+Budget: Rs.{request.budgetMin} - Rs.{request.budgetMax}
 Max Travel Distance: {request.maxTravelDistanceKm} km
 Preferred Time: {', '.join(request.preferredTimeSlots)}
 Hard Constraints: {', '.join(request.hardConstraints)}

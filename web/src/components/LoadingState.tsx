@@ -1,5 +1,4 @@
 import React from 'react';
-import './LoadingState.css';
 
 const STEPS = [
   { key: 'venues',  label: 'Searching venues near you' },
@@ -18,7 +17,7 @@ const LoadingState: React.FC<LoadingStateProps> = ({ currentStep, streamingText 
     <div className="loading-wrap">
       <div className="loading-header">
         <h2>Creating your perfect date</h2>
-        <p>This usually takes 10–15 seconds</p>
+        <p>This usually takes 10-15 seconds</p>
       </div>
 
       <div className="step-list">

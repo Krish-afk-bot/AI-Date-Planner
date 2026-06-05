@@ -1,4 +1,4 @@
-from groq_client import generate_text
+﻿from groq_client import generate_text
 from models import GiftIdea
 import json
 import re
@@ -13,7 +13,7 @@ Context:
 - Occasion: {occasion}
 - Personality: {', '.join(personality_tags)}
 - Interests: {', '.join(interests)}
-- Budget: Up to ₹{budget_max}
+- Budget: Up to Rs.{budget_max}
 
 Requirements:
 - Gifts should be appropriate for Indian context

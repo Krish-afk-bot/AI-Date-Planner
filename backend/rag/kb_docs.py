@@ -1,4 +1,4 @@
-# Curated knowledge base documents for date planning
+﻿# Curated knowledge base documents for date planning
 
 KNOWLEDGE_BASE_DOCUMENTS = [
     {
@@ -88,7 +88,7 @@ Anniversary dates require special attention to romance and personalization.
 
 ## Budget Consciousness
 - Indian dating culture values thoughtfulness over expense
-- Mid-range restaurants (₹800-1500 for two) are appropriate
+- Mid-range restaurants (Rs.800-1500 for two) are appropriate
 - Street food dates can be charming if both are comfortable
 
 ## Transportation
@@ -114,9 +114,9 @@ For couples who love food and culinary experiences.
 - Dessert-focused cafes
 
 ## Budget Considerations
-- Fine dining: ₹2500-5000 for two
-- Mid-range exploration: ₹1500-2500 for two
-- Street food tour: ₹500-1000 for two
+- Fine dining: Rs.2500-5000 for two
+- Mid-range exploration: Rs.1500-2500 for two
+- Street food tour: Rs.500-1000 for two
 
 ## Indian Context
 - Explore regional Indian cuisines
@@ -133,7 +133,7 @@ For couples who love food and culinary experiences.
 
 Creating memorable experiences without breaking the bank.
 
-## Low-Cost Venues (₹500-1000 total)
+## Low-Cost Venues (Rs.500-1000 total)
 - Public parks and gardens
 - Local museums
 - Bookstore browsing + chai
@@ -144,9 +144,9 @@ Creating memorable experiences without breaking the bank.
 - Visit local markets
 
 ## Indian Context
-- Chai dates at local cafes (₹200-400)
-- Street food exploration (₹300-600)
-- Public gardens (₹100-300)
+- Chai dates at local cafes (Rs.200-400)
+- Street food exploration (Rs.300-600)
+- Public gardens (Rs.100-300)
         """,
         "tags": ["budget", "affordable", "creative", "thoughtful", "low_cost"]
     },
@@ -170,12 +170,12 @@ Creating the perfect romantic evening experience.
 - Pleasant temperature
 
 ## Budget Allocation
-- Drinks/appetizers: ₹500-800
-- Main course: ₹1500-2500
-- Dessert: ₹400-600
-- Flowers: ₹300-500
-- Gift: ₹1000-2000
-- Total: ₹4000-7500
+- Drinks/appetizers: Rs.500-800
+- Main course: Rs.1500-2500
+- Dessert: Rs.400-600
+- Flowers: Rs.300-500
+- Gift: Rs.1000-2000
+- Total: Rs.4000-7500
 
 ## Indian Context
 - Book reservations for weekend evenings

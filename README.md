@@ -17,199 +17,189 @@
 
 ---
 
-## 🎯 Mission
+## 🎯 The Challenge
 
-AI Date Planner transforms the stress of date planning into a delightful experience by combining personality analysis, location intelligence, and cultural context to generate personalized date itineraries in minutes.
+Planning a date involves juggling multiple factors: personality compatibility, budget constraints, venue quality, timing, and local context. Most people spend hours researching venues, reading reviews, and trying to match their partner's preferences—often resulting in generic, uninspired plans.
 
-## 🔍 The Challenge
+**The problem gets worse when:**
+- You're in an unfamiliar city
+- You have specific dietary or lifestyle constraints
+- You want to surprise your partner with something thoughtful
+- You're working with a tight budget
 
-Planning a memorable date involves juggling multiple factors:
-- Understanding both partners' personalities and preferences
-- Finding suitable venues within budget and location constraints
-- Balancing activities, timing, and cultural appropriateness
-- Selecting thoughtful gifts and flowers
-- Ensuring safety and comfort in urban Indian contexts
-
-Traditional approaches rely on generic recommendations that ignore individual preferences, leading to mediocre experiences and wasted time.
+---
 
 ## 💡 Our Solution
 
-AI Date Planner uses a multi-agent AI system that:
+AI Date Planner is an intelligent system that generates personalized, contextual date plans in under 15 seconds. It combines:
 
-1. **Analyzes** both partners' profiles (personality, interests, dislikes)
-2. **Retrieves** relevant dating knowledge from a curated knowledge base using RAG
-3. **Searches** real venues via Google Places API based on location and preferences
-4. **Generates** personalized gift and flower recommendations
-5. **Orchestrates** everything into a complete date plan with timing, costs, and directions
-6. **Validates** budget constraints and provides alternatives
+- **Personality-driven matching** using visual chip selectors for intuitive input
+- **Real-time venue search** with quality filtering (4.0+ rating, 50+ reviews)
+- **RAG-powered recommendations** from 18 curated knowledge base documents
+- **Budget optimization** ensuring plans stay within your range
+- **Streaming AI generation** with live progress updates
 
-The result: A complete, personalized date itinerary in under 30 seconds.
+The system orchestrates multiple data sources in parallel, applies intelligent filtering, and crafts a complete date narrative—all while respecting cultural context and safety considerations for Indian cities.
+
+---
 
 ## ✨ Key Features
 
 | Feature | Description |
 |---------|-------------|
-| 🧠 **Personality-Driven Planning** | Analyzes personality tags (introvert, adventurous, foodie) to match venue vibes |
-| 📍 **Location Intelligence** | Uses real-time location and Google Places API to find nearby venues |
-| 💰 **Budget Optimization** | Allocates budget across segments (dining, gifts, flowers) and validates fit |
-| 🎁 **Smart Recommendations** | Generates personalized gift ideas and flower bouquet suggestions |
-| 🇮🇳 **Cultural Context** | Considers Indian city safety, dietary restrictions, and social norms |
-| 📚 **RAG-Powered Knowledge** | Retrieves relevant dating advice from curated knowledge base |
-| ⚡ **Real-Time Generation** | Complete date plans generated in 20-30 seconds |
+| 🎭 **Personality Matching** | Select from 20 personality traits, 20 interests, and 10 dislikes using visual chips |
+| 🏆 **Quality Filtering** | Only venues with 4.0+ ratings and 50+ reviews; excludes inappropriate types (hotels, hospitals, etc.) |
+| ⚡ **Parallel Execution** | Tools run concurrently, reducing generation time from 30s to 10-15s |
+| 📡 **Real-time Streaming** | Watch your date plan appear progressively with step-by-step status updates |
+| 🌆 **City-Specific Context** | 12 curated guides covering Jaipur, Delhi, Mumbai, Bangalore with budget tiers |
+| 💰 **Budget Intelligence** | Automatic cost estimation and validation across all segments |
+| 🎁 **Gift & Flower Recommendations** | Personalized suggestions based on occasion and personality |
+| 🗺️ **Google Maps Integration** | Direct links to venues with addresses and ratings |
+
+---
 
 ## 🔄 How It Works
 
 ```
-User Input → Profile Analysis → RAG Retrieval → Tool Orchestration → AI Planning → Validated Output
+User Input → Preference Vector → Parallel Tool Execution → RAG Retrieval → AI Generation → Structured Plan
 ```
 
-### Detailed Flow
+1. **Profile Creation**: Users select personality traits, interests, and dislikes using visual chips
+2. **Location Detection**: Browser geolocation provides current coordinates
+3. **Parallel Tool Execution**: Three tools run simultaneously:
+   - Places API searches nearby venues with quality filters
+   - Gift engine generates personalized recommendations
+   - Flower selector matches bouquets to occasion
+4. **RAG Retrieval**: Query embeddings fetch relevant city guides and dating tips
+5. **AI Generation**: Gemini 2.5 Flash crafts a narrative plan streaming in real-time
+6. **Budget Validation**: Final plan is checked against budget constraints
 
-1. **User submits profiles**: Self and partner details (age, personality, interests, dislikes)
-2. **Preference vector built**: System extracts vibe, food preferences, gift style, constraints
-3. **RAG retrieval**: Queries knowledge base for relevant dating patterns and tips
-4. **Tool execution**:
-   - Places Tool: Searches Google Places API for venues
-   - Gifts Tool: Generates personalized gift ideas
-   - Flowers Tool: Recommends appropriate bouquet
-5. **AI orchestration**: Gemini 2.5 Flash synthesizes all inputs into coherent plan
-6. **Budget validation**: Ensures total cost fits within user's budget range
-7. **Output delivery**: Complete itinerary with segments, timing, costs, and map links
+---
 
 ## 🏗️ System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                         Frontend (React)                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │  DateForm    │  │ LoadingSpinner│  │ DatePlanView │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-└────────────────────────────┬────────────────────────────────────┘
-                             │ HTTP/JSON
-┌────────────────────────────┴────────────────────────────────────┐
-│                    Backend (Python/Flask)                        │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                    Planner Agent                          │   │
-│  │  • Preference Vector Builder                             │   │
-│  │  • RAG Query Constructor                                 │   │
-│  │  • Tool Orchestrator                                     │   │
-│  │  • Response Parser                                       │   │
-│  └────┬─────────────────┬─────────────────┬─────────────┬──┘   │
-│       │                 │                 │             │        │
-│  ┌────▼────┐      ┌─────▼─────┐    ┌─────▼─────┐  ┌───▼────┐  │
-│  │   RAG   │      │  Places   │    │   Gifts   │  │ Flowers│  │
-│  │ System  │      │   Tool    │    │   Tool    │  │  Tool  │  │
-│  └────┬────┘      └─────┬─────┘    └───────────┘  └────────┘  │
-│       │                 │                                        │
-│  ┌────▼────┐      ┌─────▼─────┐                                │
-│  │ Gemini  │      │  Google   │                                │
-│  │Embedding│      │  Places   │                                │
-│  └─────────┘      │    API    │                                │
-│                   └───────────┘                                │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              Gemini 2.5 Flash (Text Generation)          │  │
-│  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                        Frontend (React)                      │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │ ChipSelector │  │ LoadingState │  │ DatePlanView │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+│         │                  │                  │              │
+│         └──────────────────┴──────────────────┘              │
+│                            │                                 │
+│                    SSE Streaming                             │
+└────────────────────────────┼────────────────────────────────┘
+                             │
+┌────────────────────────────┼────────────────────────────────┐
+│                    Backend (Python/Flask)                    │
+│                            │                                 │
+│         ┌──────────────────┴──────────────────┐             │
+│         │     Planner Agent (Async)            │             │
+│         └──────────────────┬──────────────────┘             │
+│                            │                                 │
+│         ┌──────────────────┼──────────────────┐             │
+│         │                  │                  │             │
+│    ┌────▼────┐      ┌─────▼─────┐     ┌─────▼─────┐       │
+│    │ Places  │      │   Gifts   │     │  Flowers  │       │
+│    │  Tool   │      │   Tool    │     │   Tool    │       │
+│    └────┬────┘      └─────┬─────┘     └─────┬─────┘       │
+│         │                  │                  │             │
+│         └──────────────────┴──────────────────┘             │
+│                   asyncio.gather()                          │
+│                            │                                 │
+│         ┌──────────────────┴──────────────────┐             │
+│         │         RAG System                   │             │
+│         │  ┌────────────┐  ┌────────────┐     │             │
+│         │  │ Embeddings │  │  Retrieval │     │             │
+│         │  └────────────┘  └────────────┘     │             │
+│         └──────────────────┬──────────────────┘             │
+│                            │                                 │
+└────────────────────────────┼────────────────────────────────┘
+                             │
+┌────────────────────────────┼────────────────────────────────┐
+│                    External Services                         │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │  Gemini AI   │  │ Google Places│  │   Firebase   │      │
+│  │  (2.5 Flash) │  │     API      │  │  (Planned)   │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### Component Responsibilities
-
-| Component | Purpose |
-|-----------|---------|
-| **Planner Agent** | Orchestrates entire planning workflow, builds prompts, parses responses |
-| **RAG System** | Embeds and retrieves relevant knowledge from curated dating tips |
-| **Places Tool** | Searches Google Places API for venues matching preferences |
-| **Gifts Tool** | Generates personalized gift ideas based on personality and occasion |
-| **Flowers Tool** | Recommends appropriate flower bouquets |
-| **Budget Tool** | Validates total cost against user's budget constraints |
+---
 
 ## 👥 User Journey
 
 | Step | User Action | System Response |
 |------|-------------|-----------------|
-| 1 | Opens app | Displays multi-step form |
-| 2 | Fills self profile (name, age, personality, interests) | Validates input |
-| 3 | Fills partner profile | Validates input |
-| 4 | Sets occasion, budget, time preferences | Validates constraints |
-| 5 | Grants location access | Captures GPS coordinates |
-| 6 | Submits form | Shows loading spinner |
-| 7 | Waits 20-30 seconds | Backend processes request |
-| 8 | Views generated plan | Displays segments, costs, map links |
-| 9 | Clicks map links | Opens Google Maps for navigation |
-| 10 | Plans new date | Resets form |
+| 1️⃣ | Opens app | Displays form with chip selectors |
+| 2️⃣ | Selects personality traits (e.g., Romantic, Foodie) | Chips highlight with pop animation |
+| 3️⃣ | Chooses interests and dislikes | Max limits enforced, summary shown |
+| 4️⃣ | Enters budget range (₹1000-3000) | Validates input |
+| 5️⃣ | Allows location access | Browser geolocation captured |
+| 6️⃣ | Submits form | Streaming begins with status: "Finding venues..." |
+| 7️⃣ | Waits 10-15 seconds | Progress steps update: venues → gifts → flowers → crafting |
+| 8️⃣ | Watches text stream | Date plan appears progressively with blinking cursor |
+| 9️⃣ | Reviews complete plan | Sees timeline, venues, gifts, flowers, budget breakdown |
+| 🔟 | Clicks venue links | Opens Google Maps for navigation |
+
+---
 
 ## 🛠️ Technology Stack
 
-### Backend (Python)
-| Technology | Purpose |
-|------------|---------|
-| **Flask 3.0** | Web framework for REST API |
-| **google-generativeai** | Gemini AI SDK for text generation and embeddings |
-| **NumPy** | Vector operations for cosine similarity |
-| **Requests** | HTTP client for Google Places API |
-| **python-dotenv** | Environment variable management |
+### Frontend
+- **React 18** with TypeScript for type safety
+- **Vite** for fast development and optimized builds
+- **CSS3** with custom design system (Playfair Display + DM Sans fonts)
+- **Server-Sent Events (SSE)** for real-time streaming
 
-### Frontend (React)
-| Technology | Purpose |
-|------------|---------|
-| **React 18** | UI framework |
-| **TypeScript** | Type-safe development |
-| **Vite** | Build tool and dev server |
-| **CSS3** | Styling with mobile-first design |
+### Backend
+- **Python 3.9+** with Flask for REST API
+- **asyncio + aiohttp** for parallel tool execution
+- **Google Generative AI SDK** for Gemini 2.5 Flash integration
+- **NumPy** for vector operations in RAG system
 
-### AI & APIs
-| Service | Purpose |
-|---------|---------|
-| **Gemini 2.5 Flash** | Text generation for date plan synthesis |
-| **Gemini Embedding 001** | Text embeddings for RAG retrieval |
-| **Google Places API** | Real-time venue search and details |
+### AI & Data
+- **Gemini 2.5 Flash** for text generation
+- **gemini-embedding-001** for semantic search
+- **Google Places API** for real-time venue data
+- **RAG System** with 18 curated knowledge base documents
 
-### Architecture Pattern
-- **Multi-Agent System**: Specialized tools coordinated by planner agent
-- **RAG (Retrieval-Augmented Generation)**: Knowledge base retrieval for contextual planning
-- **Tool-Based Architecture**: Modular tools for places, gifts, flowers, budget
+### Infrastructure (Planned)
+- **Firebase Functions** for serverless deployment
+- **Firestore** for user profile storage
+- **Firebase Hosting** for frontend delivery
+
+---
 
 ## 📊 Current Status
 
 ### ✅ Implemented (MVP)
-- Complete profile input system (self + partner)
-- Personality-based preference vector generation
-- RAG system with 6 curated knowledge base documents
-- Google Places API integration for venue search
+- Complete frontend with chip selectors and streaming UI
+- Async backend with parallel tool execution
+- RAG system with 18 knowledge base documents
+- Venue quality filtering (4.0+ rating, 50+ reviews)
+- Real-time streaming with progress indicators
+- Budget validation and cost estimation
 - Gift and flower recommendation engines
-- Budget validation and allocation
-- Gemini 2.5 Flash integration for plan generation
-- Complete date plan output with segments, costs, and map links
-- Mobile-responsive React frontend
-- Flask REST API backend
+- Google Maps integration
 
-### 🎯 Planned (Future Enhancements)
+### 🎯 Planned (Future Phases)
 - User authentication and profile persistence
-- Date plan history and favorites
-- Multi-city support with city-specific knowledge
-- Weather integration for outdoor activity planning
-- Restaurant reservation integration
-- Ride-sharing cost estimation
-- User feedback loop for plan refinement
-- A/B testing for recommendation quality
-- Analytics dashboard for popular venues and patterns
+- Saved date plans and history
+- Vendor partnerships for bookings
+- Payment integration for reservations
+- Mobile app (React Native)
+- Multi-language support
+- Social sharing features
 
-### 🔮 Target Features (Roadmap)
-- Firebase Firestore integration for data persistence
-- Social sharing of date plans
-- Community-contributed venue reviews
-- ML-based personalization from user feedback
-- Multi-language support (Hindi, Tamil, Telugu)
-- Voice input for profile creation
-- Calendar integration for scheduling
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.9+
-- Node.js 18+
-- Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
-- Google Places API key ([Get one here](https://developers.google.com/maps/documentation/places/web-service/get-api-key))
+- Python 3.9 or higher
+- Node.js 16 or higher
+- Google Cloud API keys (Gemini AI + Places API)
 
 ### Backend Setup
 
@@ -217,25 +207,18 @@ User Input → Profile Analysis → RAG Retrieval → Tool Orchestration → AI 
 # Navigate to backend directory
 cd backend
 
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure environment variables
-cp .env.example .env
-# Edit .env and add your API keys:
-# GEMINI_API_KEY=your_gemini_key
-# GOOGLE_PLACES_API_KEY=your_places_key
+# Create .env file
+cat > .env << EOF
+GEMINI_API_KEY=your_gemini_api_key_here
+GOOGLE_PLACES_API_KEY=your_places_api_key_here
+PORT=5001
+DEBUG=True
+EOF
 
-# Run backend server
+# Run the server
 python run.py
 ```
 
@@ -244,82 +227,69 @@ Backend will start at `http://localhost:5001`
 ### Frontend Setup
 
 ```bash
-# Navigate to frontend directory
+# Navigate to web directory
 cd web
 
 # Install dependencies
 npm install
 
-# Run development server
+# Start development server
 npm run dev
 ```
 
 Frontend will start at `http://localhost:3000`
 
-### Testing the Application
+### Get API Keys
 
-1. Open `http://localhost:3000` in your browser
-2. Fill in your profile (name, age, personality tags like "introvert, foodie")
-3. Fill in partner's profile
-4. Set occasion (e.g., "anniversary"), budget (e.g., ₹2000-5000)
-5. Grant location access
-6. Click "Plan My Date"
-7. View generated plan with venues, gifts, flowers, and costs
+1. **Gemini API Key**: Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. **Places API Key**: Visit [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+   - Enable Places API for your project
+   - Create credentials → API Key
 
-## 🗺️ MVP Roadmap
+---
 
-### Phase 1: Core Functionality ✅
-- [x] Profile input system
-- [x] Preference vector generation
-- [x] RAG knowledge base (6 documents)
-- [x] Google Places integration
-- [x] Gift/flower recommendation engines
-- [x] Gemini AI integration
-- [x] Budget validation
-- [x] Basic frontend UI
+## 📈 MVP Roadmap
 
-### Phase 2: Enhancement (Target: Q2 2026)
+### Phase 1: Core Experience ✅
+- [x] Personality-driven input system
+- [x] Parallel tool execution
+- [x] Real-time streaming UI
+- [x] Quality venue filtering
+- [x] RAG-powered recommendations
+
+### Phase 2: Persistence (Target: Q2 2026)
 - [ ] User authentication (Firebase Auth)
-- [ ] Profile persistence (Firestore)
+- [ ] Profile storage (Firestore)
 - [ ] Date plan history
-- [ ] Improved error handling
-- [ ] Loading states and animations
-- [ ] Mobile app (React Native)
+- [ ] Favorite venues
 
-### Phase 3: Scale & Optimize (Target: Q3 2026)
-- [ ] Multi-city knowledge bases
-- [ ] Weather integration
-- [ ] Restaurant reservation API
-- [ ] User feedback collection
-- [ ] A/B testing framework
-- [ ] Performance optimization
-- [ ] Analytics dashboard
+### Phase 3: Monetization (Target: Q3 2026)
+- [ ] Vendor partnerships
+- [ ] Booking integration
+- [ ] Commission system
+- [ ] Premium features
 
-## 🤝 Contribution Guidelines
+---
+
+## 🤝 Contributing
 
 We welcome contributions! Here's how you can help:
 
-### Areas for Contribution
-- **Knowledge Base**: Add more dating tips and patterns for different scenarios
-- **Tools**: Create new tools (e.g., weather, transportation, events)
-- **Frontend**: Improve UI/UX, add animations, enhance mobile experience
-- **Testing**: Write unit tests, integration tests, end-to-end tests
-- **Documentation**: Improve setup guides, add tutorials, create videos
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Make your changes** and test thoroughly
+4. **Commit with clear messages**: `git commit -m 'Add amazing feature'`
+5. **Push to your branch**: `git push origin feature/amazing-feature`
+6. **Open a Pull Request** with a detailed description
 
-### How to Contribute
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Test thoroughly
-5. Commit with clear messages (`git commit -m 'Add amazing feature'`)
-6. Push to your branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
+### Areas We Need Help
+- Mobile app development (React Native)
+- Additional city guides for knowledge base
+- UI/UX improvements
+- Performance optimization
+- Test coverage
 
-### Code Standards
-- Python: Follow PEP 8, use type hints
-- TypeScript: Use strict mode, define interfaces
-- Comments: Explain "why", not "what"
-- Tests: Write tests for new features
+---
 
 ## 📄 License
 
@@ -327,9 +297,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+## 🙏 Acknowledgments
+
+- **Google Gemini AI** for powerful language generation
+- **Google Places API** for real-time venue data
+- **React community** for excellent tooling and libraries
+- **Open source contributors** who inspire us daily
+
+---
+
 <div align="center">
 
-**Made with ❤️ using Gemini AI**
+**Made with ❤️ for couples everywhere**
 
 [Report Bug](https://github.com/yourusername/ai-date-planner/issues) • [Request Feature](https://github.com/yourusername/ai-date-planner/issues)
 
