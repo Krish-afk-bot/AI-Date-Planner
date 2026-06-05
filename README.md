@@ -11,6 +11,8 @@
 
 *Helping couples create memorable experiences through intelligent planning*
 
+![App Demo](demo.webp)
+
 [Quick Start](#quick-start) | [Architecture](#system-architecture) | [Tech Stack](#technology-stack)
 
 </div>
@@ -278,14 +280,7 @@ AI-Date-Planner/
 
 ## Contributing
 
-Contributions are welcome. Here is how you can help:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Make your changes and test thoroughly
-4. Commit with clear messages: `git commit -m "Add my feature"`
-5. Push to your branch: `git push origin feature/my-feature`
-6. Open a Pull Request with a description of what changed and why
+We welcome contributions! If you would like to help improve the AI Date Planner, please **⭐ Star** and **🍴 Fork** the repository, then submit a pull request with your changes.
 
 ### Areas that need help
 - Additional city guides for the knowledge base
