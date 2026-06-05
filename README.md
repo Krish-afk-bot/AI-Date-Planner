@@ -1,17 +1,17 @@
-<div align="center">
+
 
 # 💕 AI Date Planner
 
-**Personalized date planning powered by Gemini AI and real-time data**
+**Personalized date planning powered by Gemini AI and RAG**
 
-![Status](https://img.shields.io/badge/Status-MVP-success)
-![Python](https://img.shields.io/badge/Python-3.9+-blue)
-![React](https://img.shields.io/badge/React-18-61dafb)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/status-MVP-green)
+![Python](https://img.shields.io/badge/python-3.9+-blue)
+![React](https://img.shields.io/badge/react-18-blue)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-*Helping couples create memorable experiences through intelligent planning*
+*Helping couples create memorable experiences through AI-powered recommendations*
 
-[View Demo](#user-journey) • [Quick Start](#quick-start) • [Architecture](#system-architecture)
+[Quick Start](#-quick-start) • [Features](#-key-features) • [Architecture](#-system-architecture) • [Tech Stack](#-technology-stack)
 
 </div>
 
