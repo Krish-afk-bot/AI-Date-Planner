@@ -1,5 +1,4 @@
 import React from 'react';
-import './ChipSelector.css';
 
 const PERSONALITY_CHIPS = [
   'Introvert', 'Extrovert', 'Foodie', 'Adventurous', 'Romantic',
@@ -10,7 +9,7 @@ const PERSONALITY_CHIPS = [
 
 const INTEREST_CHIPS = [
   'Fine Dining', 'Street Food', 'Movies', 'Live Music', 'Art Galleries',
-  'Hiking', 'Shopping', 'Cafés', 'Cooking', 'Dancing',
+  'Hiking', 'Shopping', 'Cafes', 'Cooking', 'Dancing',
   'Board Games', 'Photography', 'Yoga', 'Gaming', 'Cricket',
   'Theatre', 'Cycling', 'Stargazing', 'Pottery', 'Karaoke'
 ];

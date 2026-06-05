@@ -1,3 +1,6 @@
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from flask import Flask, request, jsonify, Response, stream_with_context
 from flask_cors import CORS
 from config import Config, validate_config
@@ -35,13 +38,12 @@ def save_profile():
         data = request.json
         self_profile = data.get('selfProfile')
         partner_profile = data.get('partnerProfile')
-        
+
         if not self_profile or not partner_profile:
             return jsonify({
                 'error': 'Both selfProfile and partnerProfile are required'
             }), 400
-        
-        # Mock save for local dev
+
         return jsonify({
             'success': True,
             'profileId': f"local-{datetime.now().timestamp()}"
@@ -57,51 +59,43 @@ def save_profile():
 def plan_date_stream():
     """Generate a complete date plan with streaming output"""
     data = request.json
-    
+
     def generate():
         try:
-            # Step 1: Signal tools are starting
-            yield f"data: {json.dumps({'type': 'status', 'message': 'Finding venues...'})}\n\n"
-            
-            # Build request object
+            yield f"data: {json.dumps({'type': 'status', 'message': 'Finding venues...'})}\\n\\n"
+
             date_request = build_date_request(data)
-            
-            # Build preference vector
+
             from planner.planner_agent import build_preference_vector, build_rag_query, get_system_prompt, build_planner_prompt
             preference_vector = build_preference_vector(date_request)
-            
-            # Retrieve RAG context
+
             rag_query = build_rag_query(date_request, preference_vector)
             rag_results = retrieve_relevant_docs(rag_query)
             rag_context = build_rag_context(rag_results)
-            
-            # Run parallel tools
+
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            
+
             try:
                 async def get_tools():
                     async with aiohttp.ClientSession() as session:
                         return await run_tools_parallel(date_request, preference_vector, session)
-                
+
                 places, gifts, flowers = loop.run_until_complete(get_tools())
-                
-                yield f"data: {json.dumps({'type': 'status', 'message': 'Crafting your date plan...'})}\n\n"
-                
-                # Step 2: Stream Groq output token by token
+
+                yield f"data: {json.dumps({'type': 'status', 'message': 'Crafting your date plan...'})}\\n\\n"
+
                 system_prompt = get_system_prompt()
                 user_prompt = build_planner_prompt(date_request, preference_vector, rag_context, places, gifts, flowers)
-                
+
                 full_text = ""
                 for chunk in generate_text_stream(user_prompt, system_instruction=system_prompt, temperature=0.7):
                     full_text += chunk
-                    yield f"data: {json.dumps({'type': 'chunk', 'text': chunk})}\n\n"
-                
-                # Step 3: Parse and send structured data
+                    yield f"data: {json.dumps({'type': 'chunk', 'text': chunk})}\\n\\n"
+
                 from planner.planner_agent import parse_date_plan
                 date_plan = parse_date_plan(full_text)
-                
-                # Validate budget
+
                 from tools.budget_tool import budget_tool
                 budget_input = {
                     'budget_min': date_request.budgetMin,
@@ -113,19 +107,19 @@ def plan_date_stream():
                 }
                 budget_analysis = budget_tool(**budget_input)
                 date_plan.budgetFit = budget_analysis['fit']
-                
+
                 structured = date_plan_to_dict(date_plan)
-                yield f"data: {json.dumps({'type': 'structured', 'data': structured})}\n\n"
-                yield f"data: {json.dumps({'type': 'done'})}\n\n"
-                
+                yield f"data: {json.dumps({'type': 'structured', 'data': structured})}\\n\\n"
+                yield f"data: {json.dumps({'type': 'done'})}\\n\\n"
+
             finally:
                 loop.close()
-                
+
         except Exception as e:
             print(f"Error in streaming: {e}")
             traceback.print_exc()
-            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
-    
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\\n\\n"
+
     return Response(
         stream_with_context(generate()),
         mimetype='text/event-stream',
@@ -141,34 +135,28 @@ def plan_date_endpoint():
     """Generate a complete date plan"""
     try:
         data = request.json
-        
-        # Validate request
+
         if not data.get('selfProfile') or not data.get('partnerProfile'):
             return jsonify({
                 'error': 'Both selfProfile and partnerProfile are required'
             }), 400
-        
+
         if not data.get('userLocation') or not data['userLocation'].get('lat') or not data['userLocation'].get('lng'):
             return jsonify({
                 'error': 'User location (lat, lng) is required'
             }), 400
-        
+
         if not data.get('budgetMin') or not data.get('budgetMax'):
             return jsonify({
                 'error': 'Budget range (budgetMin, budgetMax) is required'
             }), 400
-        
-        # Build request object
+
         date_request = build_date_request(data)
-        
-        print(f"Received date planning request: {date_request.occasion}, Budget: ₹{date_request.budgetMin}-{date_request.budgetMax}")
-        
-        # Generate date plan
+        print(f"Received date planning request: {date_request.occasion}, Budget: Rs.{date_request.budgetMin}-{date_request.budgetMax}")
+
         date_plan = plan_date(date_request)
-        
-        # Convert to dict for JSON response
         plan_dict = date_plan_to_dict(date_plan)
-        
+
         return jsonify({
             'success': True,
             'plan': plan_dict
@@ -200,8 +188,6 @@ def init_kb():
 
 def build_date_request(data):
     """Build DateRequest object from JSON data"""
-    
-    # Build self profile
     self_loc = data['selfProfile']['location']
     self_profile = PersonProfile(
         name=data['selfProfile']['name'],
@@ -216,8 +202,7 @@ def build_date_request(data):
         interests=data['selfProfile'].get('interests', []),
         dislikes=data['selfProfile'].get('dislikes', [])
     )
-    
-    # Build partner profile
+
     partner_loc = data['partnerProfile']['location']
     partner_profile = PersonProfile(
         name=data['partnerProfile']['name'],
@@ -232,14 +217,12 @@ def build_date_request(data):
         interests=data['partnerProfile'].get('interests', []),
         dislikes=data['partnerProfile'].get('dislikes', [])
     )
-    
-    # Build user location
+
     user_location = UserLocation(
         lat=data['userLocation']['lat'],
         lng=data['userLocation']['lng']
     )
-    
-    # Build date request
+
     return DateRequest(
         selfProfile=self_profile,
         partnerProfile=partner_profile,
@@ -282,11 +265,11 @@ def date_plan_to_dict(plan):
     }
 
 if __name__ == '__main__':
-    print("🚀 Starting AI Date Planner Backend (Python)")
-    print(f"   API: http://localhost:{Config.PORT}/api")
-    print(f"   Health: http://localhost:{Config.PORT}/api/health")
-    print("✅ Ready to accept requests!\n")
-    
+    print("Starting AI Date Planner Backend")
+    print(f"  API: http://localhost:{Config.PORT}/api")
+    print(f"  Health: http://localhost:{Config.PORT}/api/health")
+    print("Ready.\n")
+
     app.run(
         host='0.0.0.0',
         port=Config.PORT,

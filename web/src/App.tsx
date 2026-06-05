@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { DateRequest, DatePlan } from './types';
 import DateForm from './components/DateForm';
 import DatePlanView from './components/DatePlanView';
@@ -21,15 +21,11 @@ function App() {
     try {
       const response = await fetch('/api/plan-date/stream', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),
       });
 
-      if (!response.body) {
-        throw new Error('No response body');
-      }
+      if (!response.body) throw new Error('No response body');
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
@@ -48,7 +44,6 @@ function App() {
           const data = JSON.parse(line.slice(6));
 
           if (data.type === 'status') {
-            // Map status message to step key
             if (data.message.includes('venue')) setCurrentStep('venues');
             if (data.message.includes('Crafting') || data.message.includes('perfect')) setCurrentStep('crafting');
           } else if (data.type === 'chunk') {
@@ -79,21 +74,21 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>💕 AI Date Planner</h1>
+        <h1>AI Date Planner</h1>
         <p>Personalized date planning powered by AI</p>
       </header>
 
       <main className="main">
         {error && (
           <div className="error-banner">
-            <p>❌ {error}</p>
+            <p>{error}</p>
             <button onClick={() => setError(null)}>Dismiss</button>
           </div>
         )}
 
         {loading && (
-          <LoadingState 
-            currentStep={currentStep} 
+          <LoadingState
+            currentStep={currentStep}
             streamingText={streamingText}
           />
         )}
@@ -108,7 +103,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>Made with ❤️ using Gemini AI</p>
+        <p>AI Date Planner - Powered by Groq &amp; RAG</p>
       </footer>
     </div>
   );
